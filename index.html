@@ -1,40 +1,348 @@
-
-
 <!DOCTYPE html>
-<html class="waves-effect" style="width: 100%;height:100vh;display:block;overflow:hidden" onclick="M.Toast.dismissAll();setTimeout(() => {M.toast({html: 'Great! Now you can safely browse the internet without accidentally closing your browser!'})}, 2)">
+<html class="waves-effect" style="width: 100%;height:100vh;display:block;overflow:hidden">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&display=swap" rel="stylesheet">
     <title>Prevent Close Tab</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.0.0/dist/css/materialize.min.css">
     <link rel="favicon" href="https://icons.iconarchive.com/icons/paomedia/small-n-flat/512/pin-icon.png">
     <link rel="shortcut icon" href="https://icons.iconarchive.com/icons/paomedia/small-n-flat/512/pin-icon.png">
-    <style>body {height:100vh}.waves-ripple {padding: 15px;background: rgba(0, 0, 0, .4) !important;transition-duration: .9s !important;  transition: transform .8s cubic-bezier(0.4, 0, 0.2, 1), opacity .4s !important}
-      @media (prefers-color-scheme: dark) {
-        body {background: #212121;color:white}
-        .waves-ripple {background: rgba(255, 255, 255, .2) !important}
+    <style>
+      body {
+        color: #39ff14;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 0) 50%,
+          rgba(0, 0, 0, 0.2) 70%,
+          rgba(0, 0, 0, 0.6)
+        );
+        font-family: 'Source Code Pro', monospace;
+        background-size: 100% 0.3rem;
+        background-color: #031e11;
+        justify-content: center;
+        height: 100vh;
+        color: #39FF14;
+        display: flex;
+        align-items: center;
+        user-select: none;
+        flex-direction: column;
+      }
+      /* body:active {
+      background-color: #074226
+      } */
+      .glitch {
+        position: relative;
+        color: white;
+        font-size: 4em;
+        letter-spacing: 0.4em;
+        clip: rect(44px, 450px, 56px, 0);
+        margin-right: -35px;
+        margin-bottom: -10px;
+        animation: glitch-anim 5s infinite linear alternate-reverse;
+      }
+      .glitch::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        left: -2px;
+        text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+        animation: glitch-anim2 1s infinite linear alternate-reverse;
+      }
+
+      /* Creates an animation with 20 steaps. For each step, it calculates 
+      a percentage for the specific step. It then generates a random clip
+      box to be used for the random glitch effect. Also adds a very subtle
+      skew to change the 'thickness' of the glitch.*/
+      @keyframes glitch-anim {
+        0% {
+          clip: rect(13px, 9999px, 8px, 0);
+          transform: skew(0.14deg);
+        }
+        5% {
+          clip: rect(98px, 9999px, 20px, 0);
+          transform: skew(0.64deg);
+        }
+        10% {
+          clip: rect(19px, 9999px, 60px, 0);
+          transform: skew(0.17deg);
+        }
+        15% {
+          clip: rect(62px, 9999px, 7px, 0);
+          transform: skew(0.66deg);
+        }
+        20% {
+          clip: rect(47px, 9999px, 16px, 0);
+          transform: skew(0.01deg);
+        }
+        25% {
+          clip: rect(29px, 9999px, 77px, 0);
+          transform: skew(0.8deg);
+        }
+        30% {
+          clip: rect(38px, 9999px, 57px, 0);
+          transform: skew(0.37deg);
+        }
+        35% {
+          clip: rect(66px, 9999px, 99px, 0);
+          transform: skew(0.18deg);
+        }
+        40% {
+          clip: rect(28px, 9999px, 48px, 0);
+          transform: skew(0.85deg);
+        }
+        45% {
+          clip: rect(96px, 9999px, 98px, 0);
+          transform: skew(0.37deg);
+        }
+        50% {
+          clip: rect(27px, 9999px, 41px, 0);
+          transform: skew(0.25deg);
+        }
+        55% {
+          clip: rect(20px, 9999px, 41px, 0);
+          transform: skew(0.8deg);
+        }
+        60% {
+          clip: rect(60px, 9999px, 16px, 0);
+          transform: skew(0.82deg);
+        }
+        65% {
+          clip: rect(97px, 9999px, 65px, 0);
+          transform: skew(0.25deg);
+        }
+        70% {
+          clip: rect(41px, 9999px, 35px, 0);
+          transform: skew(0.14deg);
+        }
+        75% {
+          clip: rect(81px, 9999px, 99px, 0);
+          transform: skew(0.62deg);
+        }
+        80% {
+          clip: rect(27px, 9999px, 97px, 0);
+          transform: skew(0.72deg);
+        }
+        85% {
+          clip: rect(19px, 9999px, 39px, 0);
+          transform: skew(0.64deg);
+        }
+        90% {
+          clip: rect(87px, 9999px, 30px, 0);
+          transform: skew(0.73deg);
+        }
+        95% {
+          clip: rect(70px, 9999px, 64px, 0);
+          transform: skew(0.29deg);
+        }
+        100% {
+          clip: rect(70px, 9999px, 89px, 0);
+          transform: skew(0.97deg);
+        }
+      }
+      @keyframes glitch-anim2 {
+        0% {
+          clip: rect(73px, 9999px, 29px, 0);
+          transform: skew(0.67deg);
+        }
+        5% {
+          clip: rect(45px, 9999px, 73px, 0);
+          transform: skew(0.51deg);
+        }
+        10% {
+          clip: rect(68px, 9999px, 89px, 0);
+          transform: skew(0.87deg);
+        }
+        15% {
+          clip: rect(56px, 9999px, 73px, 0);
+          transform: skew(0.42deg);
+        }
+        20% {
+          clip: rect(3px, 9999px, 16px, 0);
+          transform: skew(0.94deg);
+        }
+        25% {
+          clip: rect(44px, 9999px, 88px, 0);
+          transform: skew(0.53deg);
+        }
+        30% {
+          clip: rect(81px, 9999px, 5px, 0);
+          transform: skew(0.09deg);
+        }
+        35% {
+          clip: rect(86px, 9999px, 64px, 0);
+          transform: skew(0.85deg);
+        }
+        40% {
+          clip: rect(64px, 9999px, 65px, 0);
+          transform: skew(0.75deg);
+        }
+        45% {
+          clip: rect(9px, 9999px, 86px, 0);
+          transform: skew(0.04deg);
+        }
+        50% {
+          clip: rect(41px, 9999px, 21px, 0);
+          transform: skew(1deg);
+        }
+        55% {
+          clip: rect(50px, 9999px, 33px, 0);
+          transform: skew(0.75deg);
+        }
+        60% {
+          clip: rect(14px, 9999px, 69px, 0);
+          transform: skew(0.53deg);
+        }
+        65% {
+          clip: rect(35px, 9999px, 84px, 0);
+          transform: skew(0.76deg);
+        }
+        70% {
+          clip: rect(30px, 9999px, 74px, 0);
+          transform: skew(0.01deg);
+        }
+        75% {
+          clip: rect(1px, 9999px, 44px, 0);
+          transform: skew(0.7deg);
+        }
+        80% {
+          clip: rect(51px, 9999px, 40px, 0);
+          transform: skew(0.81deg);
+        }
+        85% {
+          clip: rect(32px, 9999px, 94px, 0);
+          transform: skew(0.16deg);
+        }
+        90% {
+          clip: rect(23px, 9999px, 44px, 0);
+          transform: skew(0.55deg);
+        }
+        95% {
+          clip: rect(39px, 9999px, 65px, 0);
+          transform: skew(0.61deg);
+        }
+        100% {
+          clip: rect(78px, 9999px, 29px, 0);
+          transform: skew(0.52deg);
+        }
+      }
+      @keyframes glitch-skew {
+        0% {
+          transform: skew(-4deg);
+        }
+        10% {
+          transform: skew(-2deg);
+        }
+        20% {
+          transform: skew(0deg);
+        }
+        30% {
+          transform: skew(-1deg);
+        }
+        40% {
+          transform: skew(1deg);
+        }
+        50% {
+          transform: skew(1deg);
+        }
+        60% {
+          transform: skew(0deg);
+        }
+        70% {
+          transform: skew(3deg);
+        }
+        80% {
+          transform: skew(-4deg);
+        }
+        90% {
+          transform: skew(2deg);
+        }
+        100% {
+          transform: skew(0deg);
+        }
+      }
+
+      .bar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 3px;
+        box-shadow: 0 0 40px yellow;
+        background: yellow;
+        height: 100vh;
+        z-index: -999;
+        animation: slideBar .4s forwards linear !important;
+      }
+      @keyframes slideBar {
+        0% {
+          right: 200vh
+        }
+        99% {
+          opacity: 1;
+          right: -10px
+        }
+        100% {
+          display: none;
+          opacity: 0;
+          right: -10px
+        }
+      }
+      p {
+        font-size: 13px;
+      }
+      section {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px;
+      }
+      section a {
+        color: #04d9ff;
+        text-decoration: none;
+        display: inline-flex;
+        padding: 3px 10px;
+      }
+      section a:hover,section a:focus {
+        outline: 0;
+        text-decoration: underline
+      }
+      section a:active {
+        background: rgba(4, 217, 255, .3)
       }
     </style>
   </head>
   <body>
-    <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%)">
-      <div class="container center"><h1 id="c" class="center"></h1><h5 id="c3" class="center"></h5>
-        <div id="c1">
-          <h5>
-            <b>Leave this tab open to prevent your browser from closing accidentally</b>
-          </h5>
-          <p>
-            NOTE: Due to a change in the API of Chrome, you will need to click anywhere on this page once to make this script work.
-          </p>
-          <p>
-            <img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-512.png" width="20px" style="vertical-align:middle">
-            <span style="padding-left: 10px;vertical-align:middle;"><a href="https://smartlist.ga" target="_blank">Visit my new app</a> &nbsp; <a href="https://manuthecoder.ml" target="_blank">Check out my website</a></span>
-          </p>
-        </div>
-      </div>
+    <div class="bar"></div>
+    <div id="app">
+      <h1 id="c" class="glitch" data-text="0">0</h1>
+      <h2>Clicks</h2>
+      <p>Click anywhere to prevent your browser window from closing automatically.</p>
+
+      <section>
+        <a href="//manuthecoder.ml" target="_blank">About</a>
+        <a href="//smartlist.tech" target="_blank">My app</a>
+      </section>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.0.0/dist/js/materialize.min.js"></script>
     <script>
       window.onbeforeunload = function() { return "Close browser?"; }
-      window.onclick=function(){document.getElementById('c1').style.display = "none";var x = parseInt(localStorage.getItem('count'))||0; x++;localStorage.setItem('count', x.toString());document.getElementById('c').innerHTML=x;document.getElementById('c3').innerHTML="Clicks"}
+      let count = parseInt(localStorage.getItem("count")) || parseInt(document.getElementById("c").innerText);
+      window.addEventListener("click", (e) => {
+        count++;
+        localStorage.setItem("count", count)
+        document.getElementById("c").setAttribute("data-text", count)
+        document.getElementById("c").innerText = count;
+      });
+      window.addEventListener("mousedown", (e) => {
+        let bar = document.createElement("div")
+        bar.classList = "bar";
+        document.body.appendChild(bar);
+      })
+      document.getElementById("c").innerText = count
+      document.getElementById("c").setAttribute("data-text", count)
     </script>
   </body>
 </html>
