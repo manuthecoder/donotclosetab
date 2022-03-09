@@ -329,7 +329,7 @@
       </section>
     </div>
     <script>
-      // window.onbeforeunload = function() { return "Close browser?"; }
+      window.onbeforeunload = function() { return "Close browser?"; }
       window.addEventListener("click", (e) => {
         let count = (parseInt(localStorage.getItem('count') ?? 0)) + 1;
         localStorage.setItem("count", count)
